@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Obfuscate
 
 extension Image {
     /// Returns whether a system symbol with the specified name is available.
@@ -45,7 +44,8 @@ extension Image {
     public static func privateSymbolExists(_ name: String) -> Bool {
         #if canImport(UIKit)
         // thank you seb https://x.com/SebJVidal/status/2006091535029596476
-        let selector = NSSelectorFromString(#Obfuscate("_systemImageNamed:withConfiguration:allowPrivate:"))
+        // _systemImageNamed:withConfiguration:allowPrivate:
+        let selector = NSSelectorFromString(_deobfuscate("X3N5c3RlbUltYWdlTmFtZWQ6d2l0aENvbmZpZ3VyYXRpb246YWxsb3dQcml2YXRlOg=="))
         guard UIImage.responds(to: selector) else { return false }
 
         let type = (@convention(c) (AnyClass, Selector, String, UIImage.SymbolConfiguration?, Bool) -> UIImage?).self
@@ -54,7 +54,8 @@ extension Image {
         return method(UIImage.self, selector, name, nil, true) != nil
 
         #elseif canImport(AppKit)
-        let selector = NSSelectorFromString(#Obfuscate("imageWithPrivateSystemSymbolName:accessibilityDescription:"))
+        // imageWithPrivateSystemSymbolName:accessibilityDescription:
+        let selector = NSSelectorFromString(_deobfuscate("aW1hZ2VXaXRoUHJpdmF0ZVN5c3RlbVN5bWJvbE5hbWU6YWNjZXNzaWJpbGl0eURlc2NyaXB0aW9uOg=="))
         guard NSImage.responds(to: selector) else { return false }
 
         let type = (@convention(c) (AnyClass, Selector, String, String?) -> NSImage?).self
@@ -65,4 +66,9 @@ extension Image {
         false
         #endif
     }
+}
+
+private func _deobfuscate(_ base64: String) -> String {
+    let data = Data(base64Encoded: base64)!
+    return String(data: data, encoding: .utf8)!
 }

@@ -19,15 +19,11 @@ let package = Package(
             targets: ["SwiftUIHelpers"]
         )
     ],
-    dependencies: [
-        .package(url: "https://github.com/sebjvidal/Obfuscate", branch: "main")
-    ],
+    dependencies: [],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "SwiftUIHelpers",
-            dependencies: ["Obfuscate"],
+            dependencies: [],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ]
