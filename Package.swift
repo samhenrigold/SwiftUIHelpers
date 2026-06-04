@@ -24,6 +24,9 @@ let package = Package(
         .target(
             name: "SwiftUIHelpers",
             dependencies: [],
+            resources: [
+                .copy("PrivacyInfo.xcprivacy")
+            ],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ]

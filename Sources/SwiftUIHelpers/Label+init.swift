@@ -2,7 +2,7 @@
 //  Label+init.swift
 //  SwiftUIHelpers
 //
-//  Created by Sam Henri Gold on 1/5/26.
+//  Created by Sam on 2026-01-05.
 //
 
 import SwiftUI
@@ -25,6 +25,19 @@ extension Label where Title == Text {
     nonisolated public init(_ titleKey: LocalizedStringKey, @ViewBuilder icon: () -> Icon) {
         self.init {
             Text(titleKey)
+        } icon: {
+            icon()
+        }
+    }
+
+    /// Creates a label with a custom icon view and a title generated from a localized string resource.
+    ///
+    /// - Parameters:
+    ///    - resource: A localized string resource used as the label's title.
+    ///    - icon: A view builder that creates the icon view.
+    nonisolated public init(_ resource: LocalizedStringResource, @ViewBuilder icon: () -> Icon) {
+        self.init {
+            Text(resource)
         } icon: {
             icon()
         }
@@ -60,6 +73,19 @@ extension Label where Title == Text, Icon == Image {
         }
     }
 
+    /// Creates a label with an internal system icon image and a title generated from a localized string resource.
+    ///
+    /// - Parameters:
+    ///    - resource: A localized string resource used as the label's title.
+    ///    - internalSystemName: The name of the internal system image resource to lookup.
+    nonisolated public init(_ resource: LocalizedStringResource, internalSystemName systemName: String) {
+        self.init {
+            Text(resource)
+        } icon: {
+            Image(_internalSystemName: systemName)
+        }
+    }
+
     /// Creates a label with an internal system icon image and a title generated from a string.
     ///
     /// - Parameters:
@@ -83,6 +109,19 @@ extension Label where Title == Text, Icon == Image {
     nonisolated public init(_ titleKey: LocalizedStringKey, uiImage: UIImage) {
         self.init {
             Text(titleKey)
+        } icon: {
+            Image(uiImage: uiImage)
+        }
+    }
+
+    /// Creates a label with a UIKit image icon and a title generated from a localized string resource.
+    ///
+    /// - Parameters:
+    ///    - resource: A localized string resource used as the label's title.
+    ///    - uiImage: The UIKit image to display as the label's icon.
+    nonisolated public init(_ resource: LocalizedStringResource, uiImage: UIImage) {
+        self.init {
+            Text(resource)
         } icon: {
             Image(uiImage: uiImage)
         }
@@ -112,6 +151,19 @@ extension Label where Title == Text, Icon == Image {
     nonisolated public init(_ titleKey: LocalizedStringKey, nsImage: NSImage) {
         self.init {
             Text(titleKey)
+        } icon: {
+            Image(nsImage: nsImage)
+        }
+    }
+
+    /// Creates a label with an AppKit image icon and a title generated from a localized string resource.
+    ///
+    /// - Parameters:
+    ///    - resource: A localized string resource used as the label's title.
+    ///    - nsImage: The AppKit image to display as the label's icon.
+    nonisolated public init(_ resource: LocalizedStringResource, nsImage: NSImage) {
+        self.init {
+            Text(resource)
         } icon: {
             Image(nsImage: nsImage)
         }

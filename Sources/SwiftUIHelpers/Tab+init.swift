@@ -2,7 +2,7 @@
 //  Tab+init.swift
 //  SwiftUIHelpers
 //
-//  Created by Sam Henri Gold on 1/5/26.
+//  Created by Sam on 2026-01-05.
 //
 
 import SwiftUI
