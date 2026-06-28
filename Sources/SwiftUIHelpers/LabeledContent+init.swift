@@ -116,6 +116,7 @@ extension LabeledContent where Label == SwiftUI.Label<Text, Image>, Content: Vie
     ///     - resource: A localized string resource used as the label's title.
     ///     - image: The image resource to display as the label's icon.
     ///     - content: The value content being labeled.
+    @_disfavoredOverload
     nonisolated public init(_ resource: LocalizedStringResource, image: ImageResource, @ViewBuilder content: () -> Content) {
         self.init {
             content()

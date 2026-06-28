@@ -35,6 +35,7 @@ extension Label where Title == Text {
     /// - Parameters:
     ///    - resource: A localized string resource used as the label's title.
     ///    - icon: A view builder that creates the icon view.
+    @_disfavoredOverload
     nonisolated public init(_ resource: LocalizedStringResource, @ViewBuilder icon: () -> Icon) {
         self.init {
             Text(resource)
@@ -78,6 +79,7 @@ extension Label where Title == Text, Icon == Image {
     /// - Parameters:
     ///    - resource: A localized string resource used as the label's title.
     ///    - internalSystemName: The name of the internal system image resource to lookup.
+    @_disfavoredOverload
     nonisolated public init(_ resource: LocalizedStringResource, internalSystemName systemName: String) {
         self.init {
             Text(resource)
@@ -119,6 +121,7 @@ extension Label where Title == Text, Icon == Image {
     /// - Parameters:
     ///    - resource: A localized string resource used as the label's title.
     ///    - uiImage: The UIKit image to display as the label's icon.
+    @_disfavoredOverload
     nonisolated public init(_ resource: LocalizedStringResource, uiImage: UIImage) {
         self.init {
             Text(resource)
@@ -161,6 +164,7 @@ extension Label where Title == Text, Icon == Image {
     /// - Parameters:
     ///    - resource: A localized string resource used as the label's title.
     ///    - nsImage: The AppKit image to display as the label's icon.
+    @_disfavoredOverload
     nonisolated public init(_ resource: LocalizedStringResource, nsImage: NSImage) {
         self.init {
             Text(resource)
